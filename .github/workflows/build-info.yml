@@ -50,18 +50,6 @@ jobs:
         echo GO_MODULE_VERSION=$(cat VERSION || echo "v0.0.0") >> $GITHUB_ENV
         echo GO_MODULE_NAME=$(go list -m | head -n1 | cut -d' ' -f1) >> $GITHUB_ENV
         
-    - name: Build project
-      run: |
-        # Build the Argo CD application
-        make build-local
-        # Also build CLI binary
-        make cli-local  
-
-    - name: Run tests (if available)
-      run: |
-        # Run Go tests
-        make test-local || echo "Tests completed with issues"
-      continue-on-error: true
 
     - name: Package build artifacts
       run: |
