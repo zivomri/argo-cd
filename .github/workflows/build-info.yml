@@ -43,6 +43,7 @@ jobs:
         
     - name: Download dependencies with JFrog CLI
       run: |
+        GOWORK=off 
         jf go build --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --project poc ./... || go mod download
 
     - name: Capture name and version
