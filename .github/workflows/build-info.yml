@@ -43,7 +43,6 @@ jobs:
         
     - name: Download dependencies with JFrog CLI
       run: |
-        jf go mod tidy --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --project poc
         jf go list --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --project poc
     - name: Build Go project
       run: |
