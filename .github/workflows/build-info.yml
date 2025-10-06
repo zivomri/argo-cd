@@ -39,7 +39,7 @@ jobs:
     - name: Configure Go modules
       run: |
         # Configure JFrog CLI for Go modules if needed
-        jf go-config --repo-resolve go-virtual --repo-deploy go-virtual || echo "No Go repository configured"
+        jf go-config --repo-resolve poc-go --repo-deploy poc-go || echo "No Go repository configured"
         
     - name: Download dependencies with JFrog CLI
       run: |
