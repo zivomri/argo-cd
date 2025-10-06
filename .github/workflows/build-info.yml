@@ -40,16 +40,13 @@ jobs:
       run: |
         # Configure JFrog CLI for Go modules if needed
         jf go-config --repo-resolve poc-go --repo-deploy poc-go || echo "No Go repository configured"
-        
     - name: Download dependencies with JFrog CLI
       run: |
-        - name: Download dependencies with JFrog CLI
-          run: |
-            jf go mod tidy
-            jf go get -v ./...
-        - name: Build Go project
-          run: |
-            jf go build -v ./... --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --project poc    - name: Build Go project
+        jf go mod tidy
+        jf go get -v ./...
+    - name: Build Go project
+      run: |
+        jf go build -v ./... --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --project poc    - name: Build Go project
     - name: Capture name and version
       run: |
         echo GO_MODULE_VERSION=$(cat VERSION || echo "v0.0.0") >> $GITHUB_ENV
